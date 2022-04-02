@@ -290,12 +290,12 @@ def main():
     args = parser.parse_args()
 
     try:
-        pipeline = piop.read_yml("pipeline.yml")
-        pl = AttrDict(pipeline["pipeline"])
-        config["preprocessor"] = pl.preprocessor
-        config["pretrain"] = pl.pretrain
-        config["postprocessor"] = pl.postprocessor
-        config["classifier"] = pl.classifier
+        # pipeline = piop.read_yml("pipeline.yml")
+        # pl = AttrDict(pipeline["pipeline"])
+        config["preprocessor"] = "ChineseChar"
+        config["pretrain"] = "Bert"
+        config["postprocessor"] = "Bert"
+        config["classifier"] = "BertCNN"
     except Exception as e:
         raise PipelineReadError
 
