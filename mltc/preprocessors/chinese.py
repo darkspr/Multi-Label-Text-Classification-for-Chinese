@@ -133,8 +133,7 @@ class ChineseProcessor:
         return text
 
     def clean_linkpic(self, text):
-        text = ptxt.Text(text, 'pic').clean
-        text = ptxt.Text(text, 'lnk').clean
+        text = ptxt.Text(['pic', 'lnk']).clean(text)
         return text
 
     def clean_date(self, text):
@@ -205,9 +204,9 @@ class ChineseProcessor:
     def clean_concentration(self, text):
 
         def convert_combine(text):
-            pt = ptxt.Text(text, "num")
-            pure_text = pt.clean
-            converted = self.concentration_convert(pt.extract.mats[0])
+            pt = ptxt.Text(["num"])
+            pure_text = pt.clean(text)
+            converted = self.concentration_convert(pt.extract(text).mats[0])
             return pure_text + converted
 
         rule = re.compile(r'浓度\w*[.]?\d+[.]?\d*')
@@ -256,7 +255,7 @@ class ChineseCharProcessor(ChineseProcessor):
         self.reset(stopwords_path)
 
     def __call__(self, sent):
-        sent = ptxt.Text(sent, "whi").clean
+        sent = ptxt.Text(["whi"]).clean(sent)
         sent = self.clean_linkpic(sent)
 
         sent = self.clean_english(sent)
@@ -288,7 +287,7 @@ class ChineseWordProcessor(ChineseProcessor):
         self.reset(stopwords_path)
 
     def __call__(self, sent):
-        sent = ptxt.Text(sent, "whi").clean
+        sent = ptxt.Text(["whi"]).clean(sent)
         sent = self.clean_linkpic(sent)
 
         sent = self.clean_english(sent)
