@@ -44,7 +44,10 @@ class TaskData:
             for cate in all_cates:
                 data[cate] = data["category"].apply(lambda x: int(cate in x))
 
+        zz = 0
         for row in data.values:
+            if zz % 1000 == 0:
+                print(zz, len(data))
             if is_train:
                 target = row[3:]
                 sent = str(row[0])
@@ -58,6 +61,7 @@ class TaskData:
             if sent:
                 targets.append(target)
                 sents.append(sent)
+            zz += 1
         return targets, sents
 
     def build_vocab(self, vocab_path: str, data_list: list, min_count: int):
