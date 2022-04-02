@@ -16,7 +16,7 @@ dct = {
     'cache_dir': BASE_DIR / 'models/',
     'result': BASE_DIR / "outputs/result",
 
-    'bert_vocab_path': BASE_DIR / 'pretrain/bert/base-uncased/bert_vocab.txt',
+    'bert_vocab_path': BASE_DIR / 'pretrain/bert/base-uncased/vocab.txt',
     'bert_config_file': BASE_DIR / 'pretrain/bert/base-uncased/config.json',
     'bert_model_dir': BASE_DIR / 'pretrain/bert/base-uncased',
 
