@@ -40,7 +40,7 @@ class TaskData:
 
         if is_train:
             data["category"] = data["meta"].apply(
-                lambda x: x.split('----')
+                lambda x: x.split('----'))
             for cate in all_cates:
                 data[cate] = data["category"].apply(lambda x: int(cate in x))
 
